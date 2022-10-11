@@ -125,22 +125,22 @@ struct config {
 #ifdef lsb
     lsbrand col_rand = lsbrand();
 #else
-    randomizer* col_rand = new random2(1, 100, 412, 1, false);//412表示什么
-    randomizer* row_rand = new random2(1, 1, 63, 1, false);//63是什么
+    randomizer* col_rand = new random2(1, 100, 412, 1, false);
+    randomizer* row_rand = new random2(1, 1, 63, 1, false);
 #endif
 
     int aux = 3;
     float swap_endurance = 1;
-    int mean = 100000;//10E8
+    int mean = 100000000;
     float cov = 0.3;
     int start_fault = 0;
     int crit_fault_every = 0;
 
 #ifdef global_pointer
-    int global_pointer_count = 13;//为啥是13？
+    int global_pointer_count = 13;
 #endif
 
-#ifdef dsp//dsp都可以移除
+#ifdef dsp
     int dsp_group_bit = 3;
     int dsp_pointer_mapping[8] = {2, 1, 0};
 #endif
@@ -176,7 +176,7 @@ struct config {
 
 #ifdef cai
     int row_swap_interval = 1024;
-    int swap_counts = 8;//每次换8行？
+    int swap_counts = 8;
 #endif
 
 #ifndef _extra_row
@@ -219,7 +219,7 @@ void move_gap_to(gap& g, int target, int* map) {
             return;
         }
 }
-//怎么找的？
+
 int find_next_gap(gap& g, vector<gap>& space, vector<gap>& error, vector<gap>& full, int totalheight)
 {
     int target = g.pos;
